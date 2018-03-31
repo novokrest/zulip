@@ -1446,10 +1446,10 @@ LOGGING = {
             'propagate': False,
         },
 
-        ## Uncomment the following to get all database queries logged to the console
+        # # Uncomment the following to get all database queries logged to the console
         # 'django.db': {
         #     'level': 'DEBUG',
-        #     'handlers': ['console'],
+        #     'handlers': ['console', 'file'],
         #     'propagate': False,
         # },
 

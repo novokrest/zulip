@@ -1,0 +1,11 @@
+actions/get_owned_bot_dicts: get all bots for owner
+|
++-> models/get_bot_dicts_in_realm or UserProfile.objects.filter(is_bot=True): get bots in realm + filter by owner (optionally)
+    result: list of bot-attributes-list
+|
++-> [ loop ] events/get_service_dicts_for_bots(bot_profile_id)
+             |
+             +-> models/get_user_profile_by_id: UserProfile.objects.select_related().get(id=uid)
+             +-> models/get_bot_services(id): list(Service.objects.filter(user_profile__id=user_profile_id))
+             +?-> bot_config/get_bot_config(bot_profile): BotConfigData.objects.filter(bot_profile=bot_profile)
+
